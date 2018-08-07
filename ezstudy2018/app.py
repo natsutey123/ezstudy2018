@@ -26,7 +26,7 @@ def webhook(request):
         if request.body:
             json_data = json.loads(request.body)
             result = json_data['queryResult']
-            with open('/Desktop/ezstudy2018/ezstudy2018/try.txt', 'w') as file:
+            with open('C:/Users/HP/Desktop/ezstudy2018/ezstudy2018/try.txt', 'w') as file:
                 file.write(json.dumps(json_data))
             return JsonResponse(json_data)
     # result = json_data['queryResult']
@@ -34,30 +34,30 @@ def webhook(request):
     # parameters = queryResult[parameters]
 
 
-    if action != "udemySearchCourse":
-        return HttpResponse({})
-    else:
-        requirement = "parameters"
-        r_searchcourse = requests.get('https://www.udemy.com/api-2.0/courses/',
-                                  auth=('EvBrZjvwgbY6iXWujMJE1qnNrZTmaOnDVpC57Sl9',
-                                        'neaBg8yIevDFSIXZpKZix6QyksQ2707REavzABZ507HjLtlzKKiBdvoqyvVLXWb3DptFnj7D6fGTk3YUbpc1Qtaj6gvMm24S63lSQlq4qiMbzCwiI3tKtOoG6C22IKze'),
-                                  params=requirement)
-        content = r_searchcourse.json()
-        content_data = content['results']
-        content_result = content_data[00]
-        course_urls = "https://www.udemy.com" + content_result['url']
-        course_title = content_result['title']
-
-        speech = "This is your best course" + '\n' + course_title + '\n' + course_urls
-
-        print("Response:")
-        print(speech)
-
-    return {
-    "speech": speech,
-    "fulfillmentText": speech,
-    "source": "UdemyApi"
-    }
+    # if action != "udemySearchCourse":
+    #     return HttpResponse({})
+    # else:
+    #     requirement = "parameters"
+    #     r_searchcourse = requests.get('https://www.udemy.com/api-2.0/courses/',
+    #                               auth=('EvBrZjvwgbY6iXWujMJE1qnNrZTmaOnDVpC57Sl9',
+    #                                     'neaBg8yIevDFSIXZpKZix6QyksQ2707REavzABZ507HjLtlzKKiBdvoqyvVLXWb3DptFnj7D6fGTk3YUbpc1Qtaj6gvMm24S63lSQlq4qiMbzCwiI3tKtOoG6C22IKze'),
+    #                               params=requirement)
+    #     content = r_searchcourse.json()
+    #     content_data = content['results']
+    #     content_result = content_data[00]
+    #     course_urls = "https://www.udemy.com" + content_result['url']
+    #     course_title = content_result['title']
+    #
+    #     speech = "This is your best course" + '\n' + course_title + '\n' + course_urls
+    #
+    #     print("Response:")
+    #     print(speech)
+    #
+    # return {
+    # "speech": speech,
+    # "fulfillmentText": speech,
+    # "source": "UdemyApi"
+    # }
 # req = request.get_json(silent=True, force=True)
 # print("Request:")
 # print(json.dumps(req,indent=4))
